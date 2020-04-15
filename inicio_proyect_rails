@@ -1,0 +1,20 @@
+----Documentacion de ejecuccion----
+
+1. install 'rvm'
+2. install ruby -> 'rvm install ruby-#.#.#'
+3. ir al directorio de desarrollo 'cd -> nombre_directorio'
+4. ejecutar la instalacion de la gema de rails -> 'gem install rails'
+5. crear el repositorio -> 'rails new "nombre_repo" --webpack=vue'
+6. ir al repositorio creado 'cd -> nombre_repo'
+7. agregar nodejs -> 'yarn add nodejs'
+8. agregar vue y bootstrap vue -> 'yarn add vue bootstrap-vue'
+9. agregar las gemas con las que se trabajaran en el archivo 'Gemfiles'
+10. ingresar el comando para ejecutar la instalacion de las gemas -> 'bundle install'
+11. en caso el 'rake' no permita la instalacion ejecutar: 'bundle update rake' y repetir en paso anterior
+12. ejecutar el manejo de espacio activo?? -> 'rails active_storage install'
+13. ejecutar el generador de specs -> 'rails generate rspec:install'
+14. agregar la informacion necesaria a los archivos
+15. crear la base de datos
+16. modificar la informacion del archivo 'database.yml' ubicado en 'config'
+17. ejecutar las lineas de codigo de ejecucion a la base de datos usan el comando -> 'rake db:migrate'
+

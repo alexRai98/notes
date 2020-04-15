@@ -1,0 +1,31 @@
+##############Para crear tablas#####################################
+
+rails g scaffold Tabla campo:tipo
+
+#############Para relacionar#######################################
+
+rails g scaffold NewTabla campo:tipo tabla:reference
+############Para agregar un campo##################################
+
+rails g migration add_campo_to_table campo
+
+###########Para migrar a la bd####################################
+
+rake db:migrate
+
+
+##########Para crear los controladores############################
+
+rails g controller welcome index
+
+#########Para poner lógica dentro del html########################
+
+<%= @variable %> me extrae el valor de la variable
+<% logica en ruby %> para poner logica
+
+########## devise gem #############
+ rails g devise:install  // para iniciar y ver lo que tengo que tener
+ rails g devise NombreTalla
+ rake db:migrate
+ rails g devise:views
+
