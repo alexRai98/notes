@@ -1,0 +1,24 @@
+gem 'devise'
+
+##Generate configuration
+ rails g devise:install
+##Devise with user
+ rails g devise User
+##If model User alredy exis and has a email field 
+ t.change :email, :string, null: false, default: ""
+##Then
+ rais db:migrate
+##Add fields that you want save
+ view/devise/regsitration/new
+##Generate Devices views
+ rails g devise:views
+##Configuration to add more paremtres on sign up
+class ApplicationController < ActionController::Base
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :birth_date])
+  end
+end

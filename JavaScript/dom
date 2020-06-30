@@ -1,0 +1,45 @@
+#If I whan cahange content of HTML element
+
+	variable = document.querySelector(".class") // retur element that mathc with class
+	var = document.querySelectorAll(".class") // return array for match with class
+	varaible.textContent = "Nuevo text"
+	///////	
+	var2=`<div class="other class">New!! </div>`
+	variable.innerHTML = var2
+
+#If I want to add class in some element
+	var.classList.add("add class")
+
+#For remove a class
+	var.classList.remove("green")
+
+#for add element
+	new_element = document.createElement("div")
+	new_element.classList.add("class")
+	new_element.texContent = "Hi!"
+	var.append(new_element) // Add Element at the end of container
+	var.prepend(new_element) // Add Element at the begining of container
+	 
+#Events
+	function respond(event){
+		return event.target
+	}
+	var.addEventListener("click", ()=>console.log("hola"))
+	var.addEventListener("click", respond)
+
+node.append(...nodes or strings) – append nodes or strings at the end of node,
+node.prepend(...nodes or strings) – insert nodes or strings at the beginning of node,
+node.before(...nodes or strings) –- insert nodes or strings before node,
+node.after(...nodes or strings) –- insert nodes or strings after node,
+node.replaceWith(...nodes or strings) –- replaces node with the given nodes or strings.
+
+
+"beforebegin" – insert html immediately before elem,
+"afterbegin" – insert html into elem, at the beginning,
+"beforeend" – insert html into elem, at the end,
+"afterend" – insert html immediately after elem.
+
+
+
+
+	

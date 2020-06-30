@@ -1,0 +1,32 @@
+rails generate migration AddReviewableToReviews reviewable:references{polymorphic}
+class AddReviewableToReviews < ActiveRecord::Migration[6.0]
+  def change
+    add_reference :reviews, :reviewable, polymorphic: true, index: true // Important
+  end
+end
+
+
+class Review < ActiveRecord::Base
+  belongs_to :reviewable, :polymorphic => true
+end
+
+# app/models/concerns/reviewable.rb
+
+module Reviewable
+  extend ActiveSupport::Concern
+
+  included do
+    has_many :reviews, :as => :reviewable
+  end
+end
+
+# app/models/event.rb
+
+class Event < ActiveRecord::Base
+  include Reviewable
+end
+# app/models/restaurant.rb
+
+class Restaurant < ActiveRecord::Base
+  include Reviewable
+end

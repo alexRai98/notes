@@ -1,0 +1,279 @@
+irb => para entrar en ruby
+.even? => para saber si es par
+.odd? => para saber si es impar
+.methods => para saber todos los métodos
+.class => para saber a qué clase pertenece la variable
+.is_a?(Object/Integer/String/Float/Simbol)
+.inspect // devuelve el valor de la variable en string
+
+#para recibir un valor
+	string=gets.chomp
+	numero=gets.to_i y así con todos los tipos de datos
+
+#conversiones
+
+	.to_h // para convertir a hash
+	.to_a // para convertir a un arreglo o array
+	.to_s // para convertir a un string
+	.to_i // para convertir a un entero
+	.to_sym // combierte un string en símbolo
+
+#numbers
+	1.3232.round(#decimales)
+
+#Intermpolación
+
+	nombre = "pepe"
+	saludo="Hola #{nombre}"
+	saludo=%Q(Hola #{nombre})  // tieme que ser Q mayuscula
+
+#String
+
+	para concatenar se usa el "+"
+	se usa * para multiplicar el string
+	.capitalize // convierte la primela letra a mayuscula y las demás en minúsculas
+	.upcase // poner todo el string en mayúscula
+	.downcase // para poner todo en minúscula
+	.length // para saber el tamaño del string
+	.swpcase // invierte mayúsculas por minusculas y viseversa
+	.include? "algo" // para saber si el objeto incluye a "algo"
+	.strip // elimina los espacios de los costados del string(formularios)
+	.empty? // para saber si está vacío
+	.gsub("palab","palabra que reemplazará a palab") // se usa para reemplazarpalabras dentro de un string
+	.gsub! // el cambio de string, modificará la variable inicial
+	.object_id // extrae el id que le da ruby a la variable
+	.split(" ") // parte un string por lo que se le diga, en este caso es por espacios 
+	%w(string ) // It's like to split but always cut the string for its spaces
+	%{String} // funciona como las virgulillas de JS
+	<<EOS String EOS // funciona como %{} pero no toma en cuenta lineas vacías
+	
+
+#symbols =! string 
+	
+	Los símbolos se usan cuando no queremos llenar la memoria con muchas variables
+	
+	-Con Strings:	
+		nombre = "Simón"   // nombre.object_id => 43432424234
+		nombre_2 = "Simón" // nombre_2.object_id => 54236232342
+	-Con Símbolos:
+		ejm => x = :hola  || x_2 = :hola => x y x_2 tienen el mismo id(ruby los reconoce objetos iguales)
+
+#Array
+	letra = ["","","",""]// declarar un array
+	.push() // agrega un elemento a array
+	.size // saber cuantos objetos tiene el array	
+	.pop // extrae el último elemento
+	.shift // extrae el primer elemento
+	.unshift() // agrega un elemento al inicio del array
+	.include? "objeto que se queire saber si se incluye"
+	.first // retorna el primer elemento
+	.last // reptorna el último elemento
+	.count{|x| x=="q"}//pregunta cuantos elementos cumplen con la función entre corchetes --.count{|x|x.even?} también funciona con funciones
+	.map{|x| x*2} // aplica los cambios entre {} a cada elemento de un arreglo
+	.min // selecciona el element más pqueño
+	.max // selecciona el ement más grande
+	.sum // suma los elemetos del array
+	.join("\n") // para unir en este caso un salto de linea
+	.compact // elimina los objetos vacios dentro del array
+	.each{función} // función ejm => |x| puts "Hola #{x}"
+	.index("element") // retorna el indice en el que se encuentra el elemento
+	.delete_at(indice) // elimina el elemento ubicado en el indice dado
+	.sort // para ordenar ("!") para que el orden reemplace al array deshordenado	
+	.select{|x| x.odd?} // selecciona los elementos del array que cumplen con la función entre llaves
+	.filter // same to select
+	.reject{} // es lo contrario de select
+	.any? { | pet | pet == 'scooby' } // return true if any element match with the expression
+	.all? { | age | age > 0 && age <= 122 } // return true if all elements match with the expression
+	.find{|elemet| function}// return true if found the element that match with function, then of found the element .find break
+	.tally_by{|element| function}// return a hash of elements that match with function 
+		[1,2,3]	
+	.slice(1,3) // it cuts of piece of array, the first number is the index start and the second is the index end
+	.reverse() // invierte el orden del array
+	.uniq // return element that not repeat	
+	.concat(Array2) //une 2 arrays
+ 
+	#detect
+		songs = [
+		  		{ title: 'Mad World', artist: 'Gary Jules', is_sad: true },
+		  { title: 'California Gurls', artist: 'Katy Perry', is_sad: false },
+		  { title: 'Needle in the Hay', artist: 'Elliott Smith', is_sad: true },
+		  { title: 'Happy', artist: 'Pharrell Williams', is_sad: false }
+		]
+
+		sad_song_to_play_now = songs.detect { |song| song[:is_sad] }
+
+		sad_song_to_play_now #=> { title: 'Mad World', artist: 'Gary Jules', is_sad: true }
+	#end detect
+	
+	#Inject
+	-example one
+		shopping_cart = [
+		  { name: 'Vermillion Ink', price: 12.99 },
+		  { name: 'Azure Ink', price: 9.99 },
+		  { name: 'LAMY Safari Fountain Pen', price: 49.95 }
+		]
+
+		order_total = shopping_cart.inject(0) do |total, item|
+		  total + item[:price]
+		end
+
+		order_total #=> 72.93
+	-example two
+		customer = [['full_name', 'Lois Lane'], ['position', 'Journalist']]
+		custom = customer.inject({}) do |result, element|
+		  result[element.first] = element.last
+		  result
+		end
+
+		customer #=> { "full_name"=>"Lois Lane", "position"=>"Journalist" }
+	#end Inject
+
+	#each_with_index do
+		online_opponents = Hash.new
+		%w(joe87 potatahead coolguy415 ).each_with_index do |item, index|
+		  online_opponents[item] = index
+		end
+
+		online_opponents   #=> {"joe87"=>0, "potatahead"=>1, "coolguy415"=>2}
+	#end each_with_index do
+
+	array << object // para agredar un objeto al array
+
+	
+	ejm => puts("hola mundo".split(" ").map{|x| x.upcase}.join("\n"))
+	uotput_: 
+		HOLA
+		MUNDO
+		 => nil
+	
+
+#Hashes
+
+	{} // para declarar un Hash
+	capitales = {"Colombia"=>"Bogota"} // para añadir el primer valor
+	capitales["mexico"]="ciudad de mexico" // añadir más valores
+	capitales["mexico"] // para obtener el valor relacionado a mexico  long_string = %{
+	It was the best of times,
+	It was the worst of times.
+	}
+	capitales.has_value? "ciudad de mexico" // para saber si el hash contiene a ciudad de mexico
+	capitales.has_key? "mexico" // para saber si está la llave mexico
+	.invert // invierte valores con llaves
+	capitales.merge({"marte"=>"musk"}) // para añadir un nuevo has
+	capitales.transform_values{|x| x.downcase} // para transformar las variables dentro del has 
+	capitales.map{|k,x|" la capital de #{k} es #{x}"} // para hacer arreglos
+	[["pepito",13],["rai",21]].to_h // convertir de array a has
+	.sort_by(&:last) // ordena dependiendo los valores
+	.sort_by() // ordena tomando las claves
+	.fetch(key) // retorna el valor de la clave
+	.keys
+	.values
+ 
+
+
+#ciclos
+	-while condition do
+	end
+	-Until condition // se ejecuta siempre y cuando la condición sea falsa
+	end
+	-loop do
+	 break if condition
+	end
+	-for i in 1..10 do
+	end
+	-[1,2,3,4].each{función} // función ejm => |x| puts "Hola #{x}"
+	-n.times{función} // times es un método de los enteros y empieza desde el 0 hasta "n"
+	-n.upto(n2){función} // el ciclo se ejecuta las veces desde n a n2
+	-n2.downto(n){función} // es lo inverso a upto
+	
+#Sen	tencias
+	
+	-if contidion // se ingresará siempre y cuando la condición sea verdadera
+	 elsil condition2
+	 else
+	 end
+	-unless condition // se ingresará siempre y cuando la condición sea falsa
+	 end
+	-{Aquí se puede colocar algo que se dé para todos los casos} case capacity
+		when 0
+		  "You ran out of gas."
+		else
+		  "Error: capacity has an invalid value (#{capacity})"
+	end
+	
+#rangos 
+	(1..6)
+	("a".."v")
+	(1...6) // rango exclusivo(no incluye al 6)
+
+#Procs(procedimiento) y Lambdas
+
+	
+
+	saluda = Proc.new {|nombre| puts "Hola #{nombre}"} // crea un objeto de la clase Proc
+	saluda.call("Rai") // llama al método proc y le pasa un parámetro
+
+	class Transaction
+	   def exec
+	     puts "ejecutando transacción"
+	     if block_given?  
+	       yield
+	       end
+	     end
+	end
+
+	tx.Transaction.new
+	tx.exec lambda // un lambda es un bloque de código, por ejm: {p "después de la trabsacción"}
+
+#Boloques
+
+	block_given? // método que reconoce si le da un bloque
+	def metodo
+	  yield('hola', 99) if block_given?
+	end
+	metodo{|str,num| puts str + ' ' + num.to_s} 
+
+	def other_method &name_bloque
+		name_bloque.call if block_given?
+	end
+	other_method{ puts "Hello world"}
+
+##CLI
+	ARGV // constante que da un array de comandos
+##Ruby regex
+	
+	.match?
+	.mach(regex) // retorna el elemento que cumpla con la expresión regular
+	-"this is some string".scan(/\w+/)
+	# => ["this", "is", "some", "string"]
+	-!!(str =~ /regex/)
+	
+	##ejm. extract domain
+	 path =url.match(/https?:\/\/(?<path>[\w.-]+)(\/.*)?/)
+      	 path[:path] => value =(?<path>[\w.-]+)
+
+
+#### try and catch in ruby##
+	begin
+	    conn = PG.connect( dbname: "#{db}" )
+
+	rescue => ArgumentError
+	   p "Fatal error to  #{db}"
+	else
+	   p "connection saccess to  #{db}"
+	end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

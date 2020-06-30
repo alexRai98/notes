@@ -1,0 +1,3 @@
+#convert
+	JSON.stringify(obj) // return json
+	JSON.parse(json) // return obj

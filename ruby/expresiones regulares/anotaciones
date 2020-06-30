@@ -1,0 +1,94 @@
+[abc]	A single character of: a, b, or c
+[^abc]	Any single character except: a, b, or c
+[a-z]	Any single character in the range a-z
+[a-zA-Z]	Any single character in the range a-z or A-Z
+^	Start of line
+$	End of line
+\A	Start of string
+\z	End of string
+.	Any single character
+\s	Any whitespace character
+\S	Any non-whitespace character
+\d	Any digit
+\D	Any non-digit
+\w	Any word character (letter, number, underscore)
+\W	Any non-word character
+\b	Any word boundary
+(...)	Capture everything enclosed
+(a|b)	a or b
+a?	Zero or one of a
+a*	Zero or more of a
+a+	One or more of a
+a{3}	Exactly 3 of a
+a{3,}	3 or more of a
+a{3,6}	Between 3 and 6 of a
+. // busca cualquier caracter (grupos de 1)
+
+... // busca caracteres en grupo de 3
+
+\d // busca los caracteres que son dígitos en grupos de 1
+
+\d\d\d // busca grupos de caracteres de 3 dígitos
+
+\w // busca solo letras y números descarta espacios y letras especiales- obia acentos y eñe- sí acepta al guión bajo
+
+\s // busca los espacios
+
+[0-5] // busca dijitos del 0 al 5, puedo modificar el rango como quiera
+
+[a-j] // busca los caracteres que estén dentro del rango
+
+[a-cA-Z] // busca en 2 rango cuando se está en case sensitibe
+
+[a-cA-Z0-3_ñ&,\.] // Mezcla, primero busca el rango de ariba, luego el rango de números del 0 al 3,despues los caracteres especiales que especifiquemos(para este caso _ñ&,) y finalmente busca al caracter punto, no a la clase punto de arriba
+
+##feachuri
+options: 
+i case insensitive 
+m make dot match newlines 
+x ignore whitespace in regex 
+o perform 
+#{...} substitutions only once
+
+
+##Operadores que tienen un uso distinto
+
+* => 0,uno o más ; + => uno o más ; ? => cero o uno 
+
+* // hace que busque todos los caracteres pero los agrupa como todos juntos y no como caracter indiviual.ej \d* => todos los caracteres dígitos pero agrupados
+
+\d+[a-z] // busca cadenas de dígitos que al inicio tenga números y que luego debe aparecer una letra 
+
+\d+[a-z]? // buca cademas que tengan numeros y luego aya o no una letra
+
+d+[a-z][&? // agrega que puede o no haber un &
+
+\d*[a-z] // busca cadenas que tengan al inicio numeros y luego una o más letras además todas la letras así no tengan números
+
+#contadores {min,max}
+
+\d{2,4} // quiero encontrar entre 2 a 5 dígitos
+\d{2,} // de 2 a más
+\d{10,10} // sólo 1o dígitos
+\A[a,e,i,o,u]\z // rango de la vocales
+# ? como delimitador
+
+.+?, // toma cualquer cosa más una coma pero siendo lo más corto posible
+
+#negación // podemos negar cualquier busqueda poniento el parámetro en mayúsculas
+
+\D // encuentra todo lo que no sea un dígito
+[^0-5a-c ]// me selecciona los números de 6 al 9 y las letras del d a la z y no espacios
+
+#Principio(^) y fin de líneas($) 
+Esto solo coge a las filas de que hagan mach completo, es decir que cumplan en su totalidad con la epresión regular
+^\w+,\w+,\w$ // quiero que en cada fila aya más de un término de palabra luego una coma y así 3 columnas
+
+##TRAER URL
+
+https?\/\/[.+]\.\w{2,5}\/?S*
+
+##
+
+
+

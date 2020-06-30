@@ -1,0 +1,27 @@
+referen: https://makeitrealcamp.gitbook.io/ruby-book/manipulacion-de-archivos
+
+#to read files:
+	
+	-File.read("contenido.txt") // read all file
+	-lines = File.readlines("contenido.txt") // return a Array with lines 
+	-File.foreach("contenido.txt") do |line| // for read big files
+	  puts line
+	end
+
+#to write files:
+	
+	-File.write("cuento.txt", "Había una vez ...") // write all file
+	-File.open("cuento.txt", "w") do |file| // write line for line
+	  file.write("Había una vez ...")
+	end
+	
+#JSON files {require "json"}
+
+	In this case is I want to read or write the file .JSON , I use the same methods to normal files
+	but with a little exection, when you read a json file you need parce JSON format to ruby Json 
+	and if you need write to json file you change to ruby json format to JSON format.
+	-e.j read
+		file = File.read("file.json")
+		hoal = JSON.parse(file)
+	-e.j write 
+		File.write("file.json",a.to_json)

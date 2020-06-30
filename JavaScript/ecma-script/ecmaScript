@@ -1,0 +1,229 @@
+let => local variable (this's available in the scope)
+var => global variable
+const => constant variable
+### Functions###
+
+function nameFunction(name="rai",age=20){
+	console.log(name,age);
+}
+
+### Template Literals ##
+
+let name = "Rai";
+let age = 20;
+let phrase = `${name} have ${age} years`;
+
+let phrase2 = `frase en la parte superios
+prase con salto de linea`;
+
+#### reestruccturación de elementos 
+
+## Hashes
+let person{
+'name': 'rai',
+'age': 20
+}
+
+console.log(person.name,person.age)
+
+#ES6
+let{name,age} = person;
+console.log(name,age);
+
+##Array
+
+let team1 =[1,2,3,4]
+let team2=[7,8,9]
+
+let join = ["hola", ...team1, ...team2]
+
+
+### propiedad de objetos mejorada
+
+let name ='Rai';
+let age = 34;
+
+obj ={name: name, age: age};
+#ES6
+obj2={name,age};
+
+### funciones de flecha
+
+const = names [
+ {name: "Rai",age: 20},
+{name: "Alex",age: 19}
+]
+
+ES5
+let listOfNames = names.map(function (itemExtracted){
+ console.log(itemExtracted.name)
+})
+
+ES6
+
+let listOfNames2 = names.map(item => console.log(item.name));
+const listOfNames3 = (name.age)=>{
+	code
+}
+
+const listOfNames4 = name =>{
+	code
+}
+
+const square = num => num * num; // función que recibe un parametro y retorna la multiplicación por si mismo
+
+### Promesas
+
+const helloPromise = () =>{ 
+  return new Promise((resolve,reject)=>{
+   if(true){
+	resolve('Hey!');
+   }else{
+	reject('Error!!');
+   }
+  });
+} 
+
+helloPromise()
+  .then(response=> console.log(response))
+  .catch(error => console.log(error))
+
+#### POO
+
+class calculator{
+  constructor(){
+   this.valueA = 0;
+   this.valueB = 0;
+  }
+
+  sum(valueA,valueB){
+   this.valueA=valueA
+   this.valueB=valueB
+   return this.valueA + this.valueB  
+  }
+}
+
+##import
+lo que hace es que trae una función creada en otro lado
+import {funcion2} from './module2';
+funcion2()
+
+### generator
+
+function* helloWorld(){
+ if(true){
+    yield 'hello,';
+ }
+ if (true){
+   yield 'word';
+ }
+}
+
+const generatorHello = helloWorld();
+console.log(generatorHello.next().value); => "hello"
+console.log(generatorHello.next().value); => "world"
+
+############### ES7 ######################
+
+.includes()
+potecia, igual que ruby 
+
+############## ES8 #############
+
+.length
+#Object entries
+const data ={
+ name: 'rai',
+ age: 20
+}
+
+cost entries = Object.entries(data)// convierte el hash a array o matriz
+entries.length 
+
+#Object Values
+
+const values = Object.values(data)// me devuelve los valores de las key
+
+#Pading
+
+cosnst string = 'hello';
+string.pagStart(7,'hi') // agrega al inicio del string
+string.pagEnd(12,'-----') // agrega al final del string
+
+#Async and Await
+no entendí un carajo :
+
+############## ES9 #######
+const data ={
+ name: 'rai',
+ age: 20
+}
+const obj2 ={
+ country: "Peru"
+}
+#Operador de reposo
+let {name, ...all}= data;
+console.log(all)=> {age: 20}
+
+#Operador de propagación
+une 2 objetos
+const obj2 ={
+ ...data,
+ country: "Peru"
+}
+
+#Promice finaly
+
+const helloWorld = () => {
+  return new Ṕromise((resolve,reject)=>{
+    (true)
+      ? setTimeout(()=> resolve('Hello World', 3000)
+      : reject(new Error('Test Error'))
+  });
+};
+
+helloWorld ()
+  .then(response => console.log(response))
+  .catch(error => console.log(error))
+  .finally(() => console.log('Finalizo'))
+
+# Regex
+
+const regexData = /([0-9]{4})-([0-9]{2})-([0-9]{2})/
+const match = regexData.exec('2018-04-20')
+const year = match[1]
+const month = match[2]
+const day = match[3]
+
+############## ES10
+
+#flat
+flat => aplanar
+let array = [1,2,3, [1,2,3, [1,2,3]]];
+array.flat(2) => [1,2,3,1,2,3,1,2,3] // el 2 se refiere a la porfundidad
+
+let array [1,2,3];
+array.flatMap(value => [value, value*2]) => [1,2,2,4,3,6];
+
+#elimina espacios de un string
+.trimStart() // elimina espacios al inicio del string
+.trimEnd() // elimina espacios al final del string
+
+#Optional cath error
+
+try{
+}catch{
+ error
+}
+
+# From entries
+
+let entries [["name","rai"],["age",20]]
+
+Object.fromEntries(entries) // devuelde un hash u objeto
+
+# symbolos
+let mySymbol = 'my symbol';
+let symbol = Symbol(mySymbol)
+symbol.description => "my symbol"
+

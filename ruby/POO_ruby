@@ -1,0 +1,71 @@
+class Person
+	
+	//MÉTODOS DE CLASE
+	
+	def self.suggeste_name
+		["Juan","Mateo"]
+	end	
+
+	// MÉTODOS DE INSTANCIA
+
+	def initialize(name,age) //initialize es un método para hacer el constructor
+		// usamos el "@" para declarar variables de instancia	
+		@name = name
+		@age = age 
+	end
+	def get_name
+		@name
+	end
+	def get_age
+		@age
+	end
+
+	// self me permite encadenar métodos
+	//ejm: (persona.set_name("Pedro")).set_age(20)
+	
+	def set_name (name)
+		@name=name
+		self
+	end
+
+	def set_age (age)
+		@age=age
+		self
+	end	
+end
+
+// así se llama a los métodos de instancia
+persona = Person.new("Pepe",3)
+p persona.name
+p persona.age
+
+// así es como se llama a un método de clase
+Person.suggeste_names
+
+
+###################################### Otra forma de hacer esto pero más perrón ##############################
+class Person
+	
+	def self.suggeste_name
+		["Juan","Mateo"]
+	end	
+
+	def initialize(name,age) 
+		@name = name
+		@age = age 
+	end
+	#para crear los getters y setters
+	
+	attr_accessor :name, :age
+
+end
+
+##################################### Una forma perronisimaaaaaaaaaaaa!!!! ##############################
+	
+class Person < Struct.new(:name,:age)
+	
+	def self.suggeste_name
+		["Juan","Mateo"]	
+	end	
+
+end

@@ -1,0 +1,87 @@
+Math.random()
+debugger
+typeof var => return type of variable
+##string
+	.replace(string,newString)
+## function in string
+
+	.toUpperCase()
+	.toLowerCase()
+
+	.charAt(0)=> extract a char in the position getting
+	.length
+	"AlexRai".substr(4, 3)=> "Rai"
+
+## funtions in Numbers
+
+	Math.round(number) // round to 1 number
+	number.toFixed(3) => "string" // round to 3 numbers
+	parseFloat(totalStr) 
+
+## Objets
+	
+	var person = {
+	  nombre: 'Sacha',
+	  apellido: 'Lifszyc',
+	  edad: 28
+	}
+
+	function imprimirNombreEnMayusculas({ nombre }) { // esta notacion nos dice que extraemos el valor de la llave nombre del objeto
+	  console.log(nombre.toUpperCase())
+	}
+
+  # destructuración
+	function imprimirNombreEnMayusculas(persona) {
+		let { nombre } = perosona => nombre = "Sacha"
+	}
+  #parametros como referencia
+	
+	function cumpleanos(persona) {
+	  return {
+	    ...persona,	
+	    edad: persona.edad + 1   // extrae los atributos de persona, crea otra variable y pisa la edad
+	  }
+	}
+
+## Comparaciones 
+
+	=== // compara el valor y si son del mismo tipo de variable
+
+## Arrow functions
+
+	// const esMayorDeEdad = function (persona) {
+	//   return persona.edad >= MAYORIA_DE_EDAD
+	// }
+	const esMayorDeEdad = ({ edad }) => edad >= MAYORIA_DE_EDAD
+
+## for
+	for(let i=0; i<10;i++){}
+
+## while
+
+	-while(){}
+	-do{
+	 }while(){}
+
+## 
+	let a = condition ? value if true : value if false ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

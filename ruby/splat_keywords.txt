@@ -1,0 +1,26 @@
+#splat
+	def hola(mensaje,*personas)
+		personas.each{|persona| puts "#{mensaje} #{persona}"}
+	end
+	hola("Hey hola","Rai","Carito")
+	nombres = ["Rai","Carito",":)",4]
+	hola("Hey hola",*nombres) // el splat operator "*" combierte el arreglo en cadenas
+	
+	Output:
+	Hey hola Rai
+	Hey hola Carito
+	Hey hola :)
+	Hey hola 4
+
+#Keyword
+	
+	def hola(**options)
+          if edad > 30
+	    puts "Hola señor #{nombre}"
+	  elsif edad < 30
+	    puts "Hola joves #{nombre}"
+	  end
+	  puts options[:animal_favorito]
+	end
+	
+	hola(edad:20,nombre:"Rai",color_favorito:"Azul",animal_favorito:"cocodrilo")

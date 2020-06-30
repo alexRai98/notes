@@ -1,0 +1,16 @@
+###require "http"
+response = HTTP.headers(:accept => "application/json").get('https://icanhazdadjoke.com/') // retorna un content-type en json
+>> response = HTTP.post('https://restapi.com/objects')
+>> response = HTTP.put('https://restapi.com/put')
+>> response = HTTP.patch('https://restapi.com/put')
+>> response = HTTP.delete('https://restapi.com/put')
+>> response = HTTP.head('https://restapi.com/put')
+
+
+response.parse // transforma el json a hash ruby
+
+
+######## Git Token security #####
+
+~export token=value  // crea una variable local(se hace en consola)
+ENV.fetch("token") // trae el valor de la variable local(fetch hace que retorne un error si no exixte la variable)

@@ -1,0 +1,2 @@
+bundle init // para iniciar el archivo con las gemas
+bundle install // para installar las gemas

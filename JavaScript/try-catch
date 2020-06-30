@@ -1,0 +1,22 @@
+/// try, catch and finally	
+	try {
+	  lalalala//
+	} catch(err) {
+	  alert(err.name); // ReferenceError
+	  alert(err.message); // lalala is not defined
+	  alert(err.stack); // ReferenceError: lalala is not defined at 
+	  // The error is converted to string as "name: message"
+	  alert(err); // ReferenceError: lalala is not defined
+	}finally{
+	  // always execution
+	}
+
+/// created a error
+
+	let error = new Error(message);
+	// or
+	let error = new SyntaxError(message);
+	let error = new ReferenceError(message);
+
+/// throw => asigna al error sus propiedades
+	 throw new SyntaxError("Incomplete data: no name");

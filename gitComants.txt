@@ -1,0 +1,58 @@
+##### crear llave ssh #########
+-nos ubucamos en home
+ssh-keygen -t rsa -b 4096 -c "correo_de_git"
+passfrase: lo que sea
+eval $(ssh-agent-s) // para ver si el servidor del ssh está corriendo
+ssh-add ~/.ssh/id_rsa
+-agregamos la llave a github
+copiamos la llave publica y la añadimos en SSH Keys
+
+
+
+########################git############################
+
+Comandos relacionados con un repositorio remoto:
+
+-git clone git@github.com:USER-NAME/REPOSITORY-NAME.git o git clone https://github.com/user-name/repository-name.git
+-git push origin master
+
+-gitk // ayuda visual de todas las ramas
+-git show-branch --all # (git branch también muestra las ramas)// me muestra todas las ramas (--all sirve para ver todas las ramas que no se esten mostrando)
+-git branch {nombre de la nueva rama}
+-git checkout {nombre de la rama a la que te quieres mover}
+
+Comandos relacionados con el flujo de trabajo:
+
+-git add .
+-git commit -m "A message describing what you have done to make this snapshot different"
+-git .diff // para ver el cambio exancto
+
+Comandos relacionados con la comprobación del estado o el historial de registro
+====================================================
+Plus de linux:
+alias loque_sea="comando"
+====================================================
+
+
+-git remote -v // para ver el repo del proyecto
+-git status  // muestra en que estado de git estamos
+-git log  // muestra los commits
+-git log --all // para ver todos los commits
+-git log --all --graph --decorate --oneline// muestra graficamente los cambios y las ramas(--decorate --oneline hace que se vea más bonito)
+-git show // muestra los últimos cambios que se han realizado
+- git diff v-vieja v-nueva // se usa para comparar versiones, primero la más vieja con la más reciente
+-git reset v-a_la_que_quiero_ir --hard // elmilimina los add que hice anteriomente
+-git reset v-a_la_que_quiero_ir --soft // los add siguen disponibles para el proximo commit
+
+####################### repositorio git-Platzi ###########
+-git init // hace que se cree el directorio oculto "/.git" en el proyecto
+
+########## Creando tag ######
+-git tag -a name -m "mensaje" hash_del_commit // crear tag
+-git push origin --tags // para enviar el tag a github
+-git tag // ver tags
+-git tag -d name // delete tag
+-git push origin :refs/tags/name_tag // para borrar el tag en github
+
+######## enviar distintas ramas a gitub #####
+

@@ -1,0 +1,48 @@
+whoami -> devuelve el nombre del administrador
+pwd -> devuelve la ruta del directorio en el que estás
+ll y ls -> para listar
+mkdir nombre -> crea un directorio
+touch nombre.algo -> crea un archivo
+ls / Escritorio/ ->lista los directorios y archivos de escritorio pero sin ir a escirtorio
+ls -a -> lista los directorios y archivos ocultos
+cp test.txt ../Escritorio/test.txt-> para copiar archivos
+cp -R -> para copiar directorios
+rm -> para eliminar archivos
+rm -R -> para eliminar directorios
+mv folder/old-file.txt folder/new-file.txt. -> para mover un archivo en este caso se le está cambiando de nombre
+
+-----------  vim vs nano ---------
+
+*vim
+ vim nombreArchivo.algo
+ Presionamos I para insertar texto
+ ESC para salir de modo edición
+ :w -> para guardar
+ :q -> para salir
+ :x -> salir y grabar
+
+*nano
+ nano nombreArchivo.algo
+ tiene su panel de ayuda
+
+----------- batch -----------
+
+cat archivo.algo -> muestra el contenido del archivo
+head archivo.algo -> muestra las primeras lineas
+head -n 5 archivo.algo -> me muestra las primeras 5 líneas del archivo
+tail parecido a head pero muestro lo último
+
+-------- grep -----
+permite trabajar con expresiones regulares
+
+ grep lo_que_vas_bucar archivo.algo 
+ grep -i lo_que_vas_bucar archivo.algo -> para que no sea keysensitive
+ grep -i "algo$" archivo.algo -> busca una frase que termine en "algo"
+
+------- sed -------
+ sed 's/hola/ala/g' archivo.algo-> esto sirve para sustituir hola por ala dentro de archivo.algo pero no lo modifica en si, sino crea otro flujo
+ sed '$d' archivo.algo-> elimina la última línea del archivo
+
+------- awk -------
+ awk -F ';' '{ print $1 }' archivo.algo -> el ; indica el delimitador que va a separar las columnas y  print $1 me dice que imprima la primera linea
+ awk -F ';' 'NR >1 && $3 > 0 {print $1, $3 * $4}' archivo.algo-> con este comando se pueden hacer operaciones como sql, en este caso se muestra que si NR(numero de columnas) es mayor a 1 y la columna 3 es mayor a cero que se imprima la comuna 2 y la 3 pero esta última multiplicada por la columna 4.

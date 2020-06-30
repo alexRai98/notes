@@ -1,0 +1,85 @@
+1> Add in gem file
+gem 'dotenv-rails', groups: [:development, :test]
+2> create file /.env
+3>
+FACEBOOK_KEY="your_facebook_app_id"
+FACEBOOK_SECRET="your_facebook_app_secret"
+
+GITHUB_KEY="your_github_app_id"
+GITHUB_SECRET="your_github_app_secret"
+4>add gem omniauth
+gem 'omniauth-facebook'
+5>ceate migration 
+rails g migration AddOmniauthToUsers provider:string uid:string
+6>migrate
+rails db:migrate
+7>config/initializes/devise.rb
+-config.omniauth :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET']
+8>Add in user model
+-devise :omniauthable, omniauth_providers: %i[facebook]
+9>config/routes.rb
+devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+10> create folder users in controllers
+mkdir app/controllers/users
+11> create file omniauth_callbacks_controller.rb
+touch app/controllers/users/omniauth_callbacks_controller.rb
+12> add in omniauth_callbacks_controller.rb
+class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+end
+13>add in model user
+def self.from_omniauth(auth)
+  where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+    user.email = auth.info.email
+    user.password = Devise.friendly_token[0, 20]
+  end
+end
+14>add in omniauth_callbacks_controller.rb
+ def facebook
+    @user = User.from_omniauth(request.env["omniauth.auth"])
+
+    if @user.persisted?
+      sign_in_and_redirect @user
+      set_flash_message(:notice, :success, kind: "Facebook")
+    else
+      session["devise.facebook_data"] = request.env["omniauth.auth"]
+      flash[:alert] = "Error creating user with Facebook"
+      redirect_to new_user_registration_url
+    end
+  end
+
+  def failure
+    redirect_to root_path
+  end
+
+15> add in users/sing_in
+<%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

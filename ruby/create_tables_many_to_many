@@ -1,0 +1,9 @@
+1. rails g model TableName column:type
+2. rails g migration CreateJoinTableNameOther names otehers
+3. in: "app/model"
+	class Tables < ApplicationRecord
+		has_and_belongs_to_many :other
+	end
+4. rails db:migrate
+NOTE: if you whant to add data in table_other you use:
+	

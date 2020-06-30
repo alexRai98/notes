@@ -1,0 +1,5 @@
+#in app.rb
+ use Rack::MethodOverride
+
+#in file.erb	
+	1.create a hidden input=> <input type="hidden" name="_method" value="DELETE">

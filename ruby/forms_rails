@@ -1,0 +1,10 @@
+<%= form_for @comment , url: meme_comments_path(@meme) do |f| %>
+	<%= f.text_area :body, class: "comment__body",placeholder: "Rigth a new comment here..."%>
+	<%= f.submit "Comment!", class: "submit-btn btn-comment" %>
+
+<% end %>
+
+
+## En un formulario el primer parametro es lo que recibe del controlador, luego el el url es el parámetro que se le envía al controlador por la ruta asignada.
+
+

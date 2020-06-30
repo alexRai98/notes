@@ -1,0 +1,159 @@
+ createdb [base-de-datos] // para crear base de datos	
+
+SELECT columna1,columna1 FROM Tabla; // muestra las columnas1 y 2 de la tabla
+SELECT * FROM Tabla; //muestra la tabla completa
+
+SELECT DISTINCT Director FROM movies order by Director // Distinct elimina los elementos repetidos
+
+WHERE marca = 'nissan';//CONDICIONAL
+BETWEEN 2000 AND 2010; // se usa después de un where
+NOT BETWEEN 2000 AND 2010;
+
+LIKE // WHERE column LIKE 'something%' 
+
+LIMIT #// da el límite máximo de respuestas
+
+sum(colum) // suma los elementos de una columna
+coun(colum) // cuanta los elementos de una coluna o grupo
+group by column.title // señala cómo se deben agrupar los elementos
+
+EXTRACT(YEAR FROM column) // extrae el año en postgres
+
+JOIN column ON column.id = calumn2.column_id // une tablas
+
+##########CRUD#########
+INSERT INTO table (column1,column2,..) VALUES (value1,value2,..),(value3,value4..)..;
+UPDATE Table SET column = value,other_column= other_values... WHERE condition;
+DELETE FROM Table WHERE condition;
+
+######TABLES####
+CREATE TABLE IF NOT EXISTS Table(
+    id INTEGER PRIMARY KEY,
+    column DataType TableConstraint DEFAULT default_value,
+    another_column DataType TableConstraint DEFAULT default_value,
+    …);
+
+ALTER TABLE mytable ADD column DataType OptionalTableConstraint DEFAULT default_value;
+ALTER TABLE mytable DROP column_to_be_deleted;
+ALTER TABLE mytable RENAME TO new_table_name;
+ALTER TABLE table_name ADD CONSTRAINT constraint_name constraint_definition;
+
+DROP TABLE IF EXISTS mytable;
+
+#### Data type#####
+
++INTEGER, BOOLEAN	
+	The integer datatypes can store whole integer values like the count of a number or an age. In some implementations, the boolean value is just represented as an integer value of just 0 or 1.
++FLOAT, DOUBLE, REAL	
+	The floating point datatypes can store more precise numerical data like measurements or fractional values. Different types can be used depending on the floating point precision required for that value.
++CHARACTER(num_chars), VARCHAR(num_chars), TEXT	
+	The text based datatypes can store strings and text in all sorts of locales. The distinction between the various types generally amount to underlaying efficiency of the database when working with these columns.
+
++Both the CHARACTER and VARCHAR (variable character)
+	 types are specified with the max number of characters that they can store (longer values may be truncated), so can be more efficient to store and query with big tables.
+
++DATE, DATETIME	
+	SQL can also store date and time stamps to keep track of time series and event data. They can be tricky to work with especially when manipulating data across timezones.
++BLOB	
+	Finally, SQL can store binary data in blobs right in the database. These values are often opaque to the database, so you usually have to store them with the right metadata to requery them.
+
+https://www.postgresql.org/docs/9.4/datatype.html
+
+######EXAMPLES#########
+<> // diferente
+WHERE fecha_fabricacion<'2008-10-25'; // autos que tiene 10 años de fabricación
+
+WHERE fecha_fabricacion<'2008-10-25'
+AND (marca = 'Nissan'
+OR marca = 'Toyota'); //autos nissan y toyota que tiene 10 años de fabricación
+SELECT count(*) FROM auto; // PRA CONTAR REGISTROS
+
+SELECT count(*) FROM auto
+WHERE 
+marca = 'Nissan'
+AND fecha_fabricacion < '2008-10-25' // cuántos autos de la marca nissan que tienen que ser desechados
+order by marca// ordena por marca
+order by marca DESC, modelo // ORDENO LA MARCA DE FORMA DESCENDENTE Y EL MODELO DE FORMA ASCENDENTE
+SELECT distinct(marca) FROM auto// muestra valores únicos de marca
+
+HACER CUANTOS AUTOS HAN SIDO COMPRADOS EN EL 2010
+CONDUSCTORES ENTRE 20 Y 25 AÑOS QUE HAN SIDO INFRACCIONARIOS EN EL CENTRO Y EN LA PARTE ESTE
+
+CLASE DEL 30/10/2018
+
+
+SELECT * from soat
+join auto // para unir tablas
+join auto on soat.Auto_placa = auto.placa //para emparejar solo las placas
+
+SELECT fecha_inicio, fecha_fin,placa,marca from soat
+join auto on soat.Auto_placa = auto.placa //para reducir la tabla anterior solo con fecha_inicio, fecha_fin,placa,marca
+
+SELECT fecha_inicio, fecha_fin,placa,marca,modelo, empresa.idEmpresa, empresa.nombre from soat
+join auto on soat.Auto_placa = auto.placa
+join empresa on empresa.idEmpresa=soat.idEmpresa //me da el nombre de de la empresa a la que pertenece el soat y todo lo anterior
+
+//SE PUEDEN UNIR INFINITAS TABLAS
+
+DECIR LA LISTA DE SOATS QUE HE COMPRADO
+SELECT * from soat
+
+ASUMINDO QUE ESTAMOS 1/01/2012 DEICR QUE AUTOS HOY TIENE EL SOAT al día
+
+select fecha_fin,fecha_inicio,Auto_placa, auto.modelo from soat
+join auto on auto.placa = soat.Auto_placa
+where
+fecha_inicio <='2012/01/01' 
+and fecha_fin >= '2012/01/01'
+
+cuántos autos no están vigentes
+
+select * from auto 
+where placa not in (  
+select Auto_placa from soat
+join auto on auto.placa = soat.Auto_placa
+where
+fecha_inicio <='2012/01/01' 
+and fecha_fin >= '2012/01/01')// me da todos los autos culla placa no se encuentra en la lista de autos que tienen el soat vigente. Estoy comparando placas con placas las de la tabla auto con la tabla soat
+-------------------------------------------------------------------------------------
+LISTA DE PERSONAS QUE NO HAN COMETIDO INFRACCIONES HASTA EL 2008-01-01'
+select persona.dni, persona.nombre, persona.apellidos from conductor
+join persona on conductor.dni = persona.dni // los Join simpre van despues del from ya que despuesd del from van las tablas con las que se va a trabajar
+where
+conductor.dni not in (
+	select dni_conductor from infraccion
+    where fecha >= '2008-01-01'
+    )
+order by apellidos, nombre
+--------------------------------------------------------------------
+LISTA DE INFRACCÍONES DEL 2008 EN ADELANTE
+select count(*) from infraccion
+where fecha >= '2008-01-01'
+------------------------------------------------------
+CUÁNTAS INFRACCIONES HA COMETIDO CADA CONDUCTOR
+
+select dni_conductor, count(*) from infraccion
+where fecha >= '2008-01-01'
+group by dni_conductor // genera minigrupos, en este caso de los dni
+// esta sentencia forma minigrupos luego puedo hacer operaciones con los minigrupos como si fuesen independientes
+
+select dni_conductor, nombre, apellidos, count(*) as num_i from infraccion
+join persona on persona.dni = infraccion.dni_conductor
+where fecha >= '2008-01-01'
+group by dni_conductor 
+order by num_i desc // le doy un alias a count(*), ahora ya le puedo llamar num_i
+-------------------------------------------------
+si quiero hacer un filtro con campos calculados calculados se usa el 'having', este siempre va dspues de group by
+
+select dni_conductor, nombre, apellidos, count(*) as num_i from infraccion 
+join persona on persona.dni = infraccion.dni_conductor
+where fecha >= '2008-01-01' 
+group by dni_conductor 
+having num_i >= '4'
+order by num_i desc
+-----------------------------------------------------
+lista de conductores que nunca han manejado un auto toyota
+*con los 'in' y 'not in' pueden ser anidados como el 'if'
+------------------------------------------------------
+
+

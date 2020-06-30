@@ -1,18 +1,29 @@
-##############Para crear tablas#####################################
+##############Para crear una migación ################################
+
+rails generate migration CreateTable campo:tipo
+
+##############Para crear un modelo ################################
+
+rails generate model Table campo:tipo
+
+##############Para crear una estructura completa###################
 
 rails g scaffold Tabla campo:tipo
 
 #############Para relacionar#######################################
 
-rails g scaffold NewTabla campo:tipo tabla:reference
+rails g scaffold NewTabla campo:tipo tabla:references
 ############Para agregar un campo##################################
 
-rails g migration add_campo_to_table campo
+rails generate migration AddPartNumberToProducts part_number:string
 
 ###########Para migrar a la bd####################################
 
 rake db:migrate
 
+###########Para eliminar la última migración#######################
+
+rake db:rollback
 
 ##########Para crear los controladores############################
 

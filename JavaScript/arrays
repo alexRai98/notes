@@ -1,0 +1,39 @@
+array = []
+	
+	.length
+	.push // add element in last position
+	.pop() // remove and return last element
+	.shift() // remove and return first element
+	.unshift() // add element in the first position
+	.slice(1,3) // extract a part of array 
+	.map(function) // make a array
+	.filter(function) //
+	.reduce(function) //
+	.every(function) // verify is all elements past the test function. Return boolean
+	.some(funtion) // verify is some elements past the test.Return boolean
+	.find((item,index,array)=>{}) // return element found
+	.join("") // like ruby
+	.splice(1,2,array) // from index 1 remove 2 elements and replace for array
+	.concat(arr1,arr2,..)
+	.	forEach((item,index,array)=>{})
+	.includes(elemten) // return true or false
+	.indexOf(item) // retur index
+	.sort() || .sort(function)// sort array of numbers
+	Array.isArray(array) // return boolean
+
+## loop
+	for(let array of value){}
+	array.forEach((value)=> alert("hi ${value}"))
+
+
+
+function findUniq(arr) {
+  let b = arr.reduce((gen, value)=>{
+    let a = arr.reduce((acum, val) => {  value === val ? acum +=1 :acum+=0 ; return acum},0) 
+    gen[a]=value; return gen
+  },{});
+  return b[1]
+}
+
+
+
