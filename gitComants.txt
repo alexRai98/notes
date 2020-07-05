@@ -1,8 +1,8 @@
 ##### crear llave ssh #########
 -nos ubucamos en home
-ssh-keygen -t rsa -b 4096 -c "correo_de_git"
+ssh-keygen -t rsa -b 4096 -C "correo_de_git"
 passfrase: lo que sea
-eval $(ssh-agent-s) // para ver si el servidor del ssh está corriendo
+eval $(ssh-agent -s) // para ver si el servidor del ssh está corriendo
 ssh-add ~/.ssh/id_rsa
 -agregamos la llave a github
 copiamos la llave publica y la añadimos en SSH Keys
@@ -11,6 +11,11 @@ copiamos la llave publica y la añadimos en SSH Keys
 
 ########################git############################
 
+==================================================
+Para cambiar la url dell repo al que está vinculado el proyecto:
+
+-git remote set-url origin url-ssh-del-repositorio-en-github
+===================================================
 Comandos relacionados con un repositorio remoto:
 
 -git clone git@github.com:USER-NAME/REPOSITORY-NAME.git o git clone https://github.com/user-name/repository-name.git
