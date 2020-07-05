@@ -1,0 +1,6 @@
+import React from "react";
+import ReactDOM from "react-dom";
+import "./style.css"; 
+function Navbar() {
+  return <span className="menu navigation-menu">Menu</span>;
+}

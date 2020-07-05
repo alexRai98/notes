@@ -8,7 +8,7 @@ array = []
 	.slice(1,3) // extract a part of array 
 	.map(function) // make a array
 	.filter(function) //
-	.reduce(function) //
+	.reduce(function) // 
 	.every(function) // verify is all elements past the test function. Return boolean
 	.some(funtion) // verify is some elements past the test.Return boolean
 	.find((item,index,array)=>{}) // return element found
