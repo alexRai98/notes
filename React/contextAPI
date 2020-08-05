@@ -1,0 +1,33 @@
+import React, { useState, useContext } from "react";
+import "./styles.css";
+
+const CounterContext = React.createContext();
+
+function CounterDisplay() {
+  const { count } = useContext(CounterContext);
+  return <h3>The count is: {count}</h3>;
+}
+
+function CounterButton({ onClick }) {
+  return <button onClick={onClick}>Increase Counter</button>;
+}
+
+export default function App() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div className="App">
+      <CounterContext.Provider
+        value={{
+          count,
+          increaseCounter: () => setCount(count + 1)
+        }}
+      >
+        <h1>Super counter</h1>
+        <CounterDisplay />
+        <CounterButton onClick={() => setCount(count + 1)} />
+      </CounterContext.Provider>
+    </div>
+  );
+}
+

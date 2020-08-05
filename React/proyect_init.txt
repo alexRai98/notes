@@ -1,0 +1,25 @@
+First away:
+	# Installation
+	npm install -g create-react-app
+	# Use it
+	create-react-app project-name
+
+Second away:
+
+# npx will automatically download create-react-app if needed
+npx create-react-app project-name
+####### Emotion
+
+npm i @emotion/core @emotion/styled
+##Chakra UI
+npm install @chakra-ui/core @emotion/core @emotion/styled emotion-theming
+
+
+//ROuter
+npm install react-router-dom
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
