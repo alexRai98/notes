@@ -21,3 +21,7 @@
 ############## init with possgrestsql ########3
 rails new proyect_name --skip-test --database=postgresql
 rails new proyect_name -d postgresql --skip-test
+
+#create API with rails
+ rails new pokemon-lite-api -d postgresql --api --skip-test
+ 
