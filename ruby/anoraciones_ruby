@@ -264,7 +264,8 @@ irb => para entrar en ruby
 	end
 
 
-
+Para encriptar number:
+ Digest::MD5.hexdigest str
 
 
 

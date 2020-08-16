@@ -10,10 +10,38 @@ Second away:
 npx create-react-app project-name
 ####### Emotion
 
+##Init proyect with redux
+npx create-react-app contactable-redux --template redux
+
+$emotion
 npm i @emotion/core @emotion/styled
+
 ##Chakra UI
 npm install @chakra-ui/core @emotion/core @emotion/styled emotion-theming
 
+##Material UI
+// with npm
+npm install @material-ui/core
+
+// with yarn
+yarn add @material-ui/core
+---- icons ----
+// with npm
+npm install @material-ui/icons
+
+// with yarn
+yarn add @material-ui/icons
+
+#formik and yup
+npm install formik --save
+npm install yup --save
+
+##Leaflet
+npm install react-leaflet # npm
+yarn add react-leaflet # Yarn
+
+npm install leaflet react react-dom # npm
+yarn add leaflet react react-dom # Yarn
 
 //ROuter
 npm install react-router-dom
