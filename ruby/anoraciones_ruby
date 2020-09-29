@@ -20,6 +20,7 @@ irb => para entrar en ruby
 
 #numbers
 	1.3232.round(#decimales)
+	43.divmod(10) =>[4,3]
 
 #Intermpolación
 

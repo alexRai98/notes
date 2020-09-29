@@ -48,7 +48,6 @@ alias loque_sea="comando"
 - git diff v-vieja v-nueva // se usa para comparar versiones, primero la más vieja con la más reciente
 -git reset v-a_la_que_quiero_ir --hard // elmilimina los add que hice anteriomente
 -git reset v-a_la_que_quiero_ir --soft // los add siguen disponibles para el proximo commit
-
 ####################### repositorio git-Platzi ###########
 -git init // hace que se cree el directorio oculto "/.git" en el proyecto
 

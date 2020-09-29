@@ -1,0 +1,2 @@
+StateLessWidget -> Icon,Texto(son elementos que no realizan ninguna acción)
+StateFulWidget -> button,radio(elementos que realizan acciones)
