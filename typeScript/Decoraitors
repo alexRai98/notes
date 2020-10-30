@@ -1,0 +1,129 @@
+// Implementado a métodos
+
+El target representa a la estructuta que contiene al decorator, en teste caso sería Persona y la key es quien usa la lógica exendida. En este cas es sayMyName
+
+function log(target,key){
+  console.log(key + 'se ha llamado')
+}
+
+class Persona {
+  private name: string; 
+  
+    constructor(name: string){
+    	this.name= name;
+    }
+    	
+    @log
+    sayMyName(){
+    	return this.name;
+    }
+
+}
+
+const persona : Persona = new Persona('Alan');
+
+persona.sayMyName() // Esto retornará : Rai se ha llamado
+
+// Impementados a clases
+
+
+function iniit(target){
+	return class extends target {
+		nombre = 'Alan';
+		sayMyName(){
+		  return this.name
+		}
+	}
+}
+
+@init
+class P{
+
+	constructor(){}
+	
+	sayMyName(){}	
+}
+
+const p: P = new P();
+console.log(p.sayMyName); // Rai
+
+
+// Implementado a propiedades
+
+function logProperty(target, key){
+
+  const _val = this[key];
+  
+  const getter = () =)> {
+    console.log(_val);
+    return _val;
+  }
+  
+  const setter = (newValue) => {
+   _val = newValue;
+  }
+  
+  const objectProperty = {
+    get: getter,
+    set: setter
+  }
+  
+  Object.defineProperty(target,key,objectProperty);
+}
+
+
+class Persona {
+
+  @logProperty
+  public name: string; 
+  
+    constructor(name: string){
+    	this.name= name;
+    }
+
+
+}
+
+const persona : Persona = new Persona('RAi');
+p.name = 'Alex' // setea el nombre a Alex
+cpnst nameFromClass = p.name; // get Alex
+
+
+// Implementado a parametros
+
+function logParameter(target,propertyName,index){
+  const metadatakey = `log_${propertyName}_parameters`;
+  
+  if(Array.isArray(target[metadatakey])){
+    target[metadatakey].push(index);
+  }else{
+    target[metadatakey] = [index];
+  }
+  
+}
+
+class P{
+
+	greet(@logParameter message: string): string {
+	 return message;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

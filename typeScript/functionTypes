@@ -1,0 +1,9 @@
+type CallBackError = Error | null ;
+type CallBack = (error: CallBackError, response: Object) => void;
+type SendRequest = (cd: CallBack) => void;
+
+const sendREquest: SendRequest = (cd: CallBack): void =>{
+   if(cd){
+   cd(null,{message:'Todo salió bine'});
+   }
+}

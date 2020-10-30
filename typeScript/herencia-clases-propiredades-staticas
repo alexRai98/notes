@@ -1,0 +1,32 @@
+// Una clase abstracta quiere decir que no puedo crear objetos de esta clase
+
+abstract class Item {
+  protected readonly _id: string;
+  protected _title: string;
+
+  constructor(id:number,title:string){
+   this._id = id;
+   this._title = title;
+  }
+  
+  get id():number{
+  	return this._id;
+  }
+
+  get id and setid ....
+} 
+
+class Album extends Item{
+
+  static 
+  private description: string;
+
+  constructor(id:number,title:string,description:string){
+    super(id,title);
+    this.description = description;
+  }
+
+}
+
+
+

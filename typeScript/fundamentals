@@ -1,0 +1,89 @@
+declaración de variables:
+let name: string;
+let hex: number = 0xF00D;
+let binary: number = 0b1010;
+let octal: number = 0o744;
+let idUser : any; //esto quiere decir que la variable puede obtener cualquier tipo de valor
+// objec
+let user: object;
+user={
+	id:1,
+	username:'name',
+	isPro: true
+}
+
+//Array
+const names: string[];
+const months: Array<string>;
+
+// enum === Oject de JS
+enum Country{
+	Bolivia:'bol',
+	Peru: 'pe'
+}
+
+// Interfaces
+interface PictureConfig {
+	title: string;
+	date?: string;
+	orientation: PhotoOrientation
+}
+
+// Variables no mutables
+interface Person{
+	readonly id:number;
+	name: string;
+}
+
+//Herenca de interfaces
+
+interface User extends Person{
+	username: string;
+}
+
+let newUser ={} as User;
+const user: User ={
+	id:1,
+	name:"user",
+	username:"faster"
+}
+
+//Clases y encapsulamiento(private)
+
+class User{
+  private _id:numer;
+  private _name: string;
+  
+  public constructor(id:number,name:string){
+    this._id = id;
+    this._name=name;
+  }
+
+  set id(id:number){
+    this._id = id;
+  }
+  get id():number{
+    return this._id;
+  }
+
+  
+  toString(){
+    return `name ${this.name}`
+  }
+}
+
+// A partir de ES5 y TSC 3.8
+class User{ 
+  #id:numer;
+  #name: string;
+  
+  public constructor(id:number,name:string){
+    this.#id = id;
+    this.#name=name;
+  }
+  
+  toString(){ 
+    return `name ${this.#name}`
+  }
+
+

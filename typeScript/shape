@@ -1,0 +1,26 @@
+class Persona {
+  private name: string;
+  private altura: number;
+    constructor(name: string, altura: number){
+    	this.name= nme;
+    	this.altura= altura;
+    }
+
+}
+
+class Alumno extends Personona{
+  private matricula: string;
+  
+   constructor(name: string, altura: number, matricula: string){
+   	super(name,altura);
+   	this.matricula = matricula;
+   }
+
+
+}
+
+let persona: Persona = new Persona("rai",1.65);
+let alumno: Alumno = new Alumno("rai",1.65,"matricula");
+
+persona = alumno; ##sim problema
+alumno = persona; ## error

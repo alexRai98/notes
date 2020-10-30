@@ -13,6 +13,9 @@ npx create-react-app project-name
 ##Init proyect with redux
 npx create-react-app contactable-redux --template redux
 
+## Redux persist
+npm i redux-persist
+
 $emotion
 npm i @emotion/core @emotion/styled
 
