@@ -1,0 +1,4 @@
+npm install -g @angular/cli => install angular
+ng new my-proyect
+ng serve || ng serve -o 
+
